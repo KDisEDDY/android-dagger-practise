@@ -1,13 +1,14 @@
-package com.example.android.dagger.component
+package com.example.android.dagger.di.component
 
 import android.content.Context
 import com.example.android.dagger.login.LoginActivity
 import com.example.android.dagger.main.MainActivity
-import com.example.android.dagger.registration.RegistrationActivity
 import dagger.BindsInstance
 import dagger.Component
+import javax.inject.Singleton
 
-@Component(modules = [StorageModule::class])
+@Singleton
+@Component(modules = [StorageModule::class, AppSubComponents::class])
 interface AppComponent {
 
     @Component.Factory
@@ -16,9 +17,9 @@ interface AppComponent {
     }
 
     /**
-     * the RegistrationActivity inject function
+     * register the sub component for the appComponent
      */
-    fun inject(registrationActivity: RegistrationActivity)
+    fun registrationComponent(): RegistrationComponent.Factory
 
     /**
      * the LoginActivity inject function
@@ -29,4 +30,5 @@ interface AppComponent {
      * the MainActivity inject function
      */
     fun inject(mainActivity: MainActivity)
+
 }

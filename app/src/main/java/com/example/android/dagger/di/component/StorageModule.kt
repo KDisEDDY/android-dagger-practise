@@ -1,4 +1,4 @@
-package com.example.android.dagger.component
+package com.example.android.dagger.di.component
 
 import com.example.android.dagger.storage.SharedPreferencesStorage
 import com.example.android.dagger.storage.Storage
